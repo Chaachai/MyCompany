@@ -57,7 +57,9 @@ public class TypeDemandeFacade {
     }
 
     public void test() {
-        TypeDemande type = getTypeById(2);
-        System.out.println(type);
+        List<TypeDemande> types = getAllTypes();
+        for (TypeDemande type : types) {
+            System.out.println(type);
+        }
     }
 }

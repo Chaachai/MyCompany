@@ -46,11 +46,11 @@ public class TypeDemandeFacadeTest {
 //    public void testGetAllTypes() {
 //        System.out.println("getAllTypes");
 //        TypeDemandeFacade instance = new TypeDemandeFacade();
-//        List<TypeDemande> expResult = null;
+//    //    List<TypeDemande> expResult = null;
 //        List<TypeDemande> result = instance.getAllTypes();
-//        assertEquals(expResult, result);
+//    //    assertEquals(expResult, result);
 //        // TODO review the generated test code and remove the default call to fail.
-//        fail("The test case is a prototype.");
+//   //     fail("The test case is a prototype.");
 //    }
 
     /**
