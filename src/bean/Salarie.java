@@ -18,6 +18,7 @@ public class Salarie {
     private String password;
     private String telephone;
     private double salaire;
+    private int role;
 
     public Salarie() {
     }
@@ -26,7 +27,7 @@ public class Salarie {
         this.id = id;
     }
 
-    public Salarie(Long id, String nom, String prenom, String login, String password, String telephone, double salaire) {
+    public Salarie(Long id, String nom, String prenom, String login, String password, String telephone, double salaire, int role) {
         this.id = id;
         this.nom = nom;
         this.prenom = prenom;
@@ -34,6 +35,15 @@ public class Salarie {
         this.password = password;
         this.telephone = telephone;
         this.salaire = salaire;
+        this.role = role;
+    }
+
+    public int getRole() {
+        return role;
+    }
+
+    public void setRole(int role) {
+        this.role = role;
     }
 
     public String getNom() {
@@ -83,7 +93,6 @@ public class Salarie {
     public void setSalaire(double salaire) {
         this.salaire = salaire;
     }
-    
 
     public Long getId() {
         return id;
@@ -115,9 +124,8 @@ public class Salarie {
 
     @Override
     public String toString() {
-        return "Salarie{" + "id=" + id + ", nom=" + nom + ", prenom=" + prenom + ", login=" + login + ", password=" + password + ", telephone=" + telephone + ", salaire=" + salaire + '}';
+        return "Salarie{" + "id=" + id + ", nom=" + nom + ", prenom=" + prenom + ", login=" + login + ", password=" + password + ", telephone=" + telephone + ", salaire=" + salaire + ", role=" + role + '}';
     }
 
-    
-    
+   
 }

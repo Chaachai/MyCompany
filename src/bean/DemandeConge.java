@@ -11,7 +11,7 @@ import java.util.Date;
  *
  * @author CHAACHAI Youssef
  */
-public class Demande {
+public class DemandeConge {
 
     private Long id;
     private String commentaire;
@@ -19,29 +19,41 @@ public class Demande {
     private int etat;
     private Salarie salarie;
     private int type;
+    private Date dateDebut;
+    private Date dateFin;
 
-    public Demande() {
+    public DemandeConge() {
     }
 
-    public Demande(Long id) {
+    public DemandeConge(Long id) {
         this.id = id;
     }
 
-    public Demande(Long id, String message, Date date, int etat, Long id_salarie, int type) {
+    public DemandeConge(Long id, String commentaire, Date date, int etat, Long id_salarie, int type, Date dateDebut, Date dateFin) {
         this.id = id;
-        this.commentaire = message;
+        this.commentaire = commentaire;
         this.date = date;
         this.etat = etat;
         salarie = new Salarie(id_salarie);
         this.type = type;
+        this.dateDebut = dateDebut;
+        this.dateFin = dateFin;
     }
 
-    public String getMessage() {
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
+    }
+
+    public String getCommentaire() {
         return commentaire;
     }
 
-    public void setMessage(String message) {
-        this.commentaire = message;
+    public void setCommentaire(String commentaire) {
+        this.commentaire = commentaire;
     }
 
     public Date getDate() {
@@ -68,14 +80,6 @@ public class Demande {
         this.salarie = salarie;
     }
 
-    public String getCommentaire() {
-        return commentaire;
-    }
-
-    public void setCommentaire(String commentaire) {
-        this.commentaire = commentaire;
-    }
-
     public int getType() {
         return type;
     }
@@ -84,39 +88,25 @@ public class Demande {
         this.type = type;
     }
 
-   
-
-    public Long getId() {
-        return id;
+    public Date getDateDebut() {
+        return dateDebut;
     }
 
-    public void setId(Long id) {
-        this.id = id;
+    public void setDateDebut(Date dateDebut) {
+        this.dateDebut = dateDebut;
     }
 
-    @Override
-    public int hashCode() {
-        int hash = 0;
-        hash += (id != null ? id.hashCode() : 0);
-        return hash;
+    public Date getDateFin() {
+        return dateFin;
     }
 
-    @Override
-    public boolean equals(Object object) {
-        // TODO: Warning - this method won't work in the case the id fields are not set
-        if (!(object instanceof Demande)) {
-            return false;
-        }
-        Demande other = (Demande) object;
-        if ((this.id == null && other.id != null) || (this.id != null && !this.id.equals(other.id))) {
-            return false;
-        }
-        return true;
+    public void setDateFin(Date dateFin) {
+        this.dateFin = dateFin;
     }
 
     @Override
     public String toString() {
-        return "bean.Demande[ id=" + id + " ]";
+        return "DemandeConge{" + "id=" + id + ", commentaire=" + commentaire + ", date=" + date + ", etat=" + etat + ", type=" + type + ", dateDebut=" + dateDebut + ", dateFin=" + dateFin + '}';
     }
 
 }

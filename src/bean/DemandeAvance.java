@@ -11,7 +11,7 @@ import java.util.Date;
  *
  * @author CHAACHAI Youssef
  */
-public class Demande {
+public class DemandeAvance {
 
     private Long id;
     private String commentaire;
@@ -19,29 +19,41 @@ public class Demande {
     private int etat;
     private Salarie salarie;
     private int type;
+    private int pourcentage;
+    private int mois;
 
-    public Demande() {
+    public DemandeAvance() {
     }
 
-    public Demande(Long id) {
+    public DemandeAvance(Long id) {
         this.id = id;
     }
 
-    public Demande(Long id, String message, Date date, int etat, Long id_salarie, int type) {
+    public DemandeAvance(Long id, String commentaire, Date date, int etat, Long id_salarie, int type, int pourcentage, int mois) {
         this.id = id;
-        this.commentaire = message;
+        this.commentaire = commentaire;
         this.date = date;
         this.etat = etat;
         salarie = new Salarie(id_salarie);
         this.type = type;
+        this.pourcentage = pourcentage;
+        this.mois = mois;
     }
 
-    public String getMessage() {
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
+    }
+
+    public String getCommentaire() {
         return commentaire;
     }
 
-    public void setMessage(String message) {
-        this.commentaire = message;
+    public void setCommentaire(String commentaire) {
+        this.commentaire = commentaire;
     }
 
     public Date getDate() {
@@ -68,14 +80,6 @@ public class Demande {
         this.salarie = salarie;
     }
 
-    public String getCommentaire() {
-        return commentaire;
-    }
-
-    public void setCommentaire(String commentaire) {
-        this.commentaire = commentaire;
-    }
-
     public int getType() {
         return type;
     }
@@ -84,39 +88,25 @@ public class Demande {
         this.type = type;
     }
 
-   
-
-    public Long getId() {
-        return id;
+    public int getPourcentage() {
+        return pourcentage;
     }
 
-    public void setId(Long id) {
-        this.id = id;
+    public void setPourcentage(int pourcentage) {
+        this.pourcentage = pourcentage;
     }
 
-    @Override
-    public int hashCode() {
-        int hash = 0;
-        hash += (id != null ? id.hashCode() : 0);
-        return hash;
+    public int getMois() {
+        return mois;
     }
 
-    @Override
-    public boolean equals(Object object) {
-        // TODO: Warning - this method won't work in the case the id fields are not set
-        if (!(object instanceof Demande)) {
-            return false;
-        }
-        Demande other = (Demande) object;
-        if ((this.id == null && other.id != null) || (this.id != null && !this.id.equals(other.id))) {
-            return false;
-        }
-        return true;
+    public void setMois(int mois) {
+        this.mois = mois;
     }
 
     @Override
     public String toString() {
-        return "bean.Demande[ id=" + id + " ]";
+        return "DemandeAvance{" + "id=" + id + ", commentaire=" + commentaire + ", date=" + date + ", etat=" + etat + ", salarie=" + salarie + ", type=" + type + ", pourcentage=" + pourcentage + ", mois=" + mois + '}';
     }
 
 }
