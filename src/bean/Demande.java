@@ -14,7 +14,7 @@ import java.util.Date;
 public class Demande {
 
     private Long id;
-    private String message;
+    private String commentaire;
     private Date date;
     private int etat;
     private Salarie salarie;
@@ -29,7 +29,7 @@ public class Demande {
 
     public Demande(Long id, String message, Date date, int etat, Long id_salarie, int id_typeDemande) {
         this.id = id;
-        this.message = message;
+        this.commentaire = message;
         this.date = date;
         this.etat = etat;
         salarie = new Salarie(id_salarie);
@@ -37,11 +37,11 @@ public class Demande {
     }
 
     public String getMessage() {
-        return message;
+        return commentaire;
     }
 
     public void setMessage(String message) {
-        this.message = message;
+        this.commentaire = message;
     }
 
     public Date getDate() {

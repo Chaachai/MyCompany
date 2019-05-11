@@ -17,7 +17,7 @@ import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
-
+import service.SalarieFacade;
 
 /**
  * FXML Controller class
@@ -25,6 +25,8 @@ import javafx.stage.Stage;
  * @author CHAACHAI Youssef
  */
 public class LoginFXMLController implements Initializable {
+
+    SalarieFacade sf = new SalarieFacade();
 
     @FXML
     private Button loginButton;
@@ -39,10 +41,17 @@ public class LoginFXMLController implements Initializable {
     private TextField login;
     @FXML
     private PasswordField password;
-    
+
     @FXML
-    public void connect(){
-        System.out.println("Login = "+login.getText()+" Password = "+password.getText());
+    public void connect() {
+        int res = sf.login(login.getText(), password.getText());
+        if (res == 1) {
+            System.out.println("WELCOME !");
+        } else if (res == -1) {
+            System.out.println("incorrect !");
+        } else {
+            System.out.println("errorrrr");
+        }
     }
 
     @FXML
@@ -51,10 +60,10 @@ public class LoginFXMLController implements Initializable {
 
         stage.close();
     }
-    
+
     @FXML
     public void minimizeApp(ActionEvent event) {
-        Stage stage = (Stage) ((Button)event.getSource()).getScene().getWindow();
+        Stage stage = (Stage) ((Button) event.getSource()).getScene().getWindow();
         stage.setIconified(true);
     }
 
@@ -64,7 +73,7 @@ public class LoginFXMLController implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         // TODO
-        
+
     }
 
 }
