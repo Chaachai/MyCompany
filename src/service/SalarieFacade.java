@@ -5,7 +5,9 @@
  */
 package service;
 
+import bean.Salarie;
 import java.sql.ResultSet;
+import static jdk.nashorn.internal.runtime.Debug.id;
 
 /**
  *
@@ -33,5 +35,36 @@ public class SalarieFacade {
         return -2;
 
     }
+    
+     public Salarie getSalarieByLogin(String login) {
+        ResultSet rs = c.loadData("SELECT * FROM salarie WHERE login = '" + login+"' ");
+        Salarie sal = new Salarie();
+        if (sal != null) {
+            try {
+                while (rs.next()) {
+                    sal.setId(rs.getLong(1));
+                    sal.setNom(rs.getString(2));
+                    sal.setPrenom(rs.getString(3));
+                    sal.setLogin(rs.getString(4));
+                    sal.setPassword(rs.getString(5));
+                    sal.setTelephone(rs.getString(6));
+                    sal.setSalaire(rs.getDouble(7));
+                    sal.setRole(rs.getInt(8));                                                       
+                }
+                
+                return sal;
+            } catch (Exception e) {
+                System.out.println(e);
+                return null;
+            }
+        } else {
+            return null;
+        }
+    }
+     
+     public void test(){
+         Salarie s = getSalarieByLogin("hamza");
+         System.out.println(s);
+     }
 
 }

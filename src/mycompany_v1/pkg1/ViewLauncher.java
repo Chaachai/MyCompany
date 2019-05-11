@@ -5,14 +5,16 @@
  */
 package mycompany_v1.pkg1;
 
+import java.io.IOException;
 import javafx.application.Application;
 import javafx.application.Platform;
+import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.fxml.FXMLLoader;
+import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.input.MouseEvent;
-import javafx.scene.paint.Color;
 import javafx.stage.Stage;
 import javafx.stage.StageStyle;
 
@@ -20,14 +22,14 @@ import javafx.stage.StageStyle;
  *
  * @author CHAACHAI Youssef
  */
-public class MyCompany_v11 extends Application {
+public class ViewLauncher extends Application {
 
     private double xOffset = 0;
     private double yOffset = 0;
 
     @Override
     public void start(Stage stage) throws Exception {
-        Parent root = FXMLLoader.load(getClass().getResource("EmployeFXML.fxml"));
+        Parent root = FXMLLoader.load(getClass().getResource("LoginFXML.fxml"));
 
         Scene scene = new Scene(root);
 
@@ -52,6 +54,15 @@ public class MyCompany_v11 extends Application {
         stage.setScene(scene);
         stage.setResizable(false);
         stage.show();
+    }
+    
+     public static void forward(ActionEvent actionEvent, String pageName, Class myClass) throws IOException {
+        Parent parent = FXMLLoader.load(myClass.getResource(pageName));
+        Scene scene = new Scene(parent);
+        Stage app_stage = (Stage) ((Node) actionEvent.getSource()).getScene().getWindow();
+        app_stage.hide();
+        app_stage.setScene(scene);
+        app_stage.show();
     }
 
     /**

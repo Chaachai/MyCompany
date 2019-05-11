@@ -5,9 +5,10 @@
  */
 package mycompany_v1.pkg1;
 
+import bean.Salarie;
+import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
-import javafx.application.Platform;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
@@ -43,10 +44,21 @@ public class LoginFXMLController implements Initializable {
     private PasswordField password;
 
     @FXML
-    public void connect() {
-        int res = sf.login(login.getText(), password.getText());
+    public void connect(ActionEvent actionEvent) throws IOException {
+         int res = sf.login(login.getText(), password.getText());
         if (res == 1) {
-            System.out.println("WELCOME !");
+            System.out.println("welcome");
+            Salarie s = sf.getSalarieByLogin(login.getText());
+            if (s.getRole() == 1) {
+
+                System.out.println("vous etes le directeur");
+            } else if (s.getRole() == 2) {
+                ViewLauncher.forward(actionEvent, "EmployeFXML.fxml", this.getClass());
+                System.out.println("vous etes un responnsable");
+            } else if (s.getRole() == 3) {
+                System.out.println("vous etes un employe");
+            }
+            //System.out.println("role ="+s.getRole());     
         } else if (res == -1) {
             System.out.println("incorrect !");
         } else {
