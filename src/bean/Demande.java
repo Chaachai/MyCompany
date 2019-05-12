@@ -16,7 +16,7 @@ public class Demande {
     private Long id;
     private String commentaire;
     private Date date;
-    private int etat;
+    private EtatDemande etat;
     private Salarie salarie;
     private int type;
 
@@ -27,11 +27,11 @@ public class Demande {
         this.id = id;
     }
 
-    public Demande(Long id, String message, Date date, int etat, Long id_salarie, int type) {
+    public Demande(Long id, String message, Date date, int id_etat, Long id_salarie, int type) {
         this.id = id;
         this.commentaire = message;
         this.date = date;
-        this.etat = etat;
+        etat = new EtatDemande(id_etat);
         salarie = new Salarie(id_salarie);
         this.type = type;
     }
@@ -52,11 +52,11 @@ public class Demande {
         this.date = date;
     }
 
-    public int getEtat() {
+    public EtatDemande getEtat() {
         return etat;
     }
 
-    public void setEtat(int etat) {
+    public void setEtat(EtatDemande etat) {
         this.etat = etat;
     }
 
@@ -83,8 +83,6 @@ public class Demande {
     public void setType(int type) {
         this.type = type;
     }
-
-   
 
     public Long getId() {
         return id;
@@ -116,7 +114,7 @@ public class Demande {
 
     @Override
     public String toString() {
-        return "bean.Demande[ id=" + id + " ]";
+        return "Demande{" + "id=" + id + ", commentaire=" + commentaire + ", date=" + date + ", type=" + type + '}';
     }
 
 }

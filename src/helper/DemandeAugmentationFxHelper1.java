@@ -6,7 +6,7 @@ import java.util.List;
 
 import javafx.scene.control.TableView;
 
-public class DemandeCongeFxHelper extends AbstractFxHelper<DemandeConge> {
+public class DemandeAugmentationFxHelper1 extends AbstractFxHelper<DemandeConge> {
 
     private static AbstractFxHelperItem[] titres;
 
@@ -21,11 +21,11 @@ public class DemandeCongeFxHelper extends AbstractFxHelper<DemandeConge> {
         };
     }
 
-    public DemandeCongeFxHelper(TableView<DemandeConge> table, List<DemandeConge> list) {
+    public DemandeAugmentationFxHelper1(TableView<DemandeConge> table, List<DemandeConge> list) {
         super(titres, table, list);
     }
 
-    public DemandeCongeFxHelper(TableView<DemandeConge> table) {
+    public DemandeAugmentationFxHelper1(TableView<DemandeConge> table) {
         super(titres, table);
     }
 

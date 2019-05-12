@@ -1,12 +1,11 @@
 package helper;
 
-import bean.Demande;
-import bean.DemandeConge;
+import bean.DemandeAvance;
 import java.util.List;
 
 import javafx.scene.control.TableView;
 
-public class DemandeCongeFxHelper extends AbstractFxHelper<DemandeConge> {
+public class DemandeAvanceFxHelper extends AbstractFxHelper<DemandeAvance> {
 
     private static AbstractFxHelperItem[] titres;
 
@@ -21,11 +20,11 @@ public class DemandeCongeFxHelper extends AbstractFxHelper<DemandeConge> {
         };
     }
 
-    public DemandeCongeFxHelper(TableView<DemandeConge> table, List<DemandeConge> list) {
+    public DemandeAvanceFxHelper(TableView<DemandeAvance> table, List<DemandeAvance> list) {
         super(titres, table, list);
     }
 
-    public DemandeCongeFxHelper(TableView<DemandeConge> table) {
+    public DemandeAvanceFxHelper(TableView<DemandeAvance> table) {
         super(titres, table);
     }
 

@@ -18,7 +18,9 @@ import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
+import javax.swing.JOptionPane;
 import service.SalarieFacade;
+import util.Session;
 
 /**
  * FXML Controller class
@@ -45,24 +47,43 @@ public class LoginFXMLController implements Initializable {
 
     @FXML
     public void connect(ActionEvent actionEvent) throws IOException {
-         int res = sf.login(login.getText(), password.getText());
-        if (res == 1) {
-            System.out.println("welcome");
-            Salarie s = sf.getSalarieByLogin(login.getText());
-            if (s.getRole() == 1) {
+        int res = sf.login(login.getText(), password.getText());
+        switch (res) {
+            case 1:
+                System.out.println("welcome");
+                Salarie sal = sf.getSalarieByLogin(login.getText());
+                Session.setAttribut(sal, "connectedUser");
+                switch (sal.getRole()) {
+                    case 1:
+                        System.out.println("vous etes le directeur");
+                        break;
+                    case 2:
+                        ViewLauncher.forward(actionEvent, "EmployeDemandeFXML.fxml", this.getClass());
+                        System.out.println("vous etes un responnsable");
+                        break;
+                    case 3:
+                        System.out.println("vous etes un employe");
+                        break;
+                    default:
+                        break;
+                }
+                break;
+            case -1:
+                JOptionPane.showMessageDialog(null, "L'identifiant ou le mot de passe est incorrect !", "Echec de la connexion", JOptionPane.ERROR_MESSAGE);
+                break;
+            default:
+                JOptionPane.showMessageDialog(null, "something bad happened, please try again later !", "Error", JOptionPane.ERROR_MESSAGE);
+                break;
+        }
+    }
 
-                System.out.println("vous etes le directeur");
-            } else if (s.getRole() == 2) {
-                ViewLauncher.forward(actionEvent, "EmployeFXML.fxml", this.getClass());
-                System.out.println("vous etes un responnsable");
-            } else if (s.getRole() == 3) {
-                System.out.println("vous etes un employe");
-            }
-            //System.out.println("role ="+s.getRole());     
-        } else if (res == -1) {
-            System.out.println("incorrect !");
+    private boolean testChamps() {
+        if (login.getText().equals("")) {
+            return false;
+        } else if (password.getText().equals("")) {
+            return false;
         } else {
-            System.out.println("errorrrr");
+            return true;
         }
     }
 

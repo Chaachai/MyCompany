@@ -16,9 +16,8 @@ public class DemandeConge {
     private Long id;
     private String commentaire;
     private Date date;
-    private int etat;
+    private EtatDemande etat;
     private Salarie salarie;
-    private int type;
     private Date dateDebut;
     private Date dateFin;
 
@@ -29,13 +28,10 @@ public class DemandeConge {
         this.id = id;
     }
 
-    public DemandeConge(Long id, String commentaire, Date date, int etat, Long id_salarie, int type, Date dateDebut, Date dateFin) {
+    public DemandeConge(Long id, String commentaire, Date date, Date dateDebut, Date dateFin) {
         this.id = id;
         this.commentaire = commentaire;
         this.date = date;
-        this.etat = etat;
-        salarie = new Salarie(id_salarie);
-        this.type = type;
         this.dateDebut = dateDebut;
         this.dateFin = dateFin;
     }
@@ -64,11 +60,11 @@ public class DemandeConge {
         this.date = date;
     }
 
-    public int getEtat() {
+    public EtatDemande getEtat() {
         return etat;
     }
 
-    public void setEtat(int etat) {
+    public void setEtat(EtatDemande etat) {
         this.etat = etat;
     }
 
@@ -78,14 +74,6 @@ public class DemandeConge {
 
     public void setSalarie(Salarie salarie) {
         this.salarie = salarie;
-    }
-
-    public int getType() {
-        return type;
-    }
-
-    public void setType(int type) {
-        this.type = type;
     }
 
     public Date getDateDebut() {
@@ -106,7 +94,7 @@ public class DemandeConge {
 
     @Override
     public String toString() {
-        return "DemandeConge{" + "id=" + id + ", commentaire=" + commentaire + ", date=" + date + ", etat=" + etat + ", type=" + type + ", dateDebut=" + dateDebut + ", dateFin=" + dateFin + '}';
+        return "DemandeConge{" + "id=" + id + ", commentaire=" + commentaire + ", date=" + date + ", dateDebut=" + dateDebut + ", dateFin=" + dateFin + '}';
     }
 
 }
