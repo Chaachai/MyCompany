@@ -1,8 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import de.jensd.fx.glyphs.materialicons.MaterialIconView?>
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
@@ -76,16 +77,21 @@
             </Label>
          </children>
       </Pane>
-      <Button layoutX="332.0" layoutY="91.0" mnemonicParsing="false" prefHeight="57.0" prefWidth="181.0" text="Nouveau message">
+      <Button layoutX="332.0" layoutY="91.0" mnemonicParsing="false" prefHeight="57.0" prefWidth="152.0" text="Nouveau message">
          <font>
             <Font name="System Bold" size="15.0" />
          </font>
       </Button>
-      <ImageView fitHeight="87.0" fitWidth="76.0" layoutX="249.0" layoutY="83.0" pickOnBounds="true" preserveRatio="true">
+      <ImageView fitHeight="87.0" fitWidth="76.0" layoutX="250.0" layoutY="85.0" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@../../../../mail-phone-email-icons_.png" />
          </image>
       </ImageView>
-      <MaterialIconView layoutX="281.0" layoutY="344.0" />
+      <TableView layoutX="517.0" layoutY="240.0" prefHeight="200.0" prefWidth="449.0">
+        <columns>
+          <TableColumn prefWidth="75.0" text="C1" />
+          <TableColumn prefWidth="75.0" text="C2" />
+        </columns>
+      </TableView>
    </children>
 </AnchorPane>
