@@ -8,6 +8,7 @@ package mycompany_v1.pkg1;
 import bean.Salarie;
 import helper.DemandeAvanceFxHelper;
 import helper.DemandeCongeFxHelper;
+import helper.DemandeAugmentationFxHelper1 ;
 import java.net.URL;
 import java.util.ResourceBundle;
 import javafx.event.ActionEvent;
@@ -55,7 +56,8 @@ public class EmployeDemandeFXMLController implements Initializable {
      */
     private void initHelper() {
         demandeCongeFxHelper = new DemandeCongeFxHelper(congeTableView, demandeCongeFacade.getAllDemandes());
-//        demandeAvanceFxHelper = new DemandeAvanceFxHelper(avanceTableView, demandeAvanceFacade.getAllDemandes());
+//      demandeAvanceFxHelper = new DemandeAvanceFxHelper(avanceTableView, demandeAvanceFacade.getAllDemandes());
+/      demandeAugmentationFxHelper = new DemandeAugmentationFxHelper(augmentationTableView, demandeAugmentationFacade.getAllDemandes());
     }
 
     @FXML
