@@ -11,11 +11,10 @@ public class DemandeAvanceFxHelper extends AbstractFxHelper<DemandeAvance> {
 
     static {
         titres = new AbstractFxHelperItem[]{
-            new AbstractFxHelperItem("N#", "id"),
             new AbstractFxHelperItem("DATE", "date"),
-            new AbstractFxHelperItem("DATE DEBUT", "dateDebut"),
-            new AbstractFxHelperItem("DATE FIN", "dateFin"),
-            new AbstractFxHelperItem("Commentaire", "commentaire"),
+            new AbstractFxHelperItem("POURCENTAGE", "pourcentage"),
+            new AbstractFxHelperItem("MOIS", "mois"),
+            new AbstractFxHelperItem("COMMENTAIRE", "commentaire"),
             new AbstractFxHelperItem("ETAT", "etat")
         };
     }

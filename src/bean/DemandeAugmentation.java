@@ -18,7 +18,6 @@ public class DemandeAugmentation {
     private Date date;
     private EtatDemande etat;
     private Salarie salarie;
-    private int type;
     private int pourcentage;
 
     public DemandeAugmentation() {
@@ -28,15 +27,14 @@ public class DemandeAugmentation {
         this.id = id;
     }
 
-    public DemandeAugmentation(Long id, String commentaire, Date date, int id_etat, Long id_salarie, int type, int pourcentage) {
+    public DemandeAugmentation(Long id, String commentaire, Date date, int pourcentage) {
         this.id = id;
         this.commentaire = commentaire;
         this.date = date;
-        etat = new EtatDemande(id_etat);
-        salarie = new Salarie(id_salarie);
-        this.type = type;
         this.pourcentage = pourcentage;
     }
+
+   
 
     public Long getId() {
         return id;
@@ -78,14 +76,6 @@ public class DemandeAugmentation {
         this.salarie = salarie;
     }
 
-    public int getType() {
-        return type;
-    }
-
-    public void setType(int type) {
-        this.type = type;
-    }
-
     public int getPourcentage() {
         return pourcentage;
     }
@@ -96,7 +86,8 @@ public class DemandeAugmentation {
 
     @Override
     public String toString() {
-        return "DemandeAugmentation{" + "id=" + id + ", commentaire=" + commentaire + ", date=" + date + ", type=" + type + ", pourcentage=" + pourcentage + '}';
+        return "DemandeAugmentation{" + "id=" + id + ", commentaire=" + commentaire + ", date=" + date + ", pourcentage=" + pourcentage + '}';
     }
 
+   
 }

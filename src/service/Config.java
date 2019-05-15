@@ -5,18 +5,19 @@
  */
 package service;
 
-
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.ResultSet;
+import java.sql.SQLException;
 import java.sql.Statement;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 /**
  *
  * @author CHAACHAI Youssef
  */
 public class Config {
-
 
     public Connection connect() {
         try {
@@ -26,8 +27,9 @@ public class Config {
 
             if (con != null) {
                 System.out.println("Connected !");
-            }else
+            } else {
                 System.out.println("Not connected !!");
+            }
 
             return con;
 
@@ -47,6 +49,19 @@ public class Config {
             System.out.println(e);
             return null;
         }
+    }
+
+    public int insertData(String query) {
+        Connection con = connect();
+        try {
+            Statement stmt = con.createStatement();
+            stmt.executeUpdate(query);
+            return 1;
+        } catch (SQLException ex) {
+            Logger.getLogger(Config.class.getName()).log(Level.SEVERE, null, ex);
+            return - 1;
+        }
+
     }
 
 }
