@@ -10,6 +10,7 @@ import java.sql.DriverManager;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
@@ -62,6 +63,21 @@ public class Config {
             return - 1;
         }
 
+    }
+
+    public Long generateId(String tableName, String idName) {
+        int maxId = 0;
+        String query = " SELECT max(" + idName + ") FROM " + tableName + " ";
+        ResultSet rs = loadData(query);
+        try {
+            while (rs.next()) {
+                maxId = rs.getInt(1);
+            }
+            return maxId + 1L;
+        } catch (SQLException ex) {
+            Logger.getLogger(Config.class.getName()).log(Level.SEVERE, null, ex);
+            return 1L;
+        }        
     }
 
 }
