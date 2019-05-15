@@ -6,9 +6,10 @@
 package mycompany_v1.pkg1;
 
 import bean.Salarie;
+import helper.DemandeAugmentationFxHelper;
 import helper.DemandeAvanceFxHelper;
 import helper.DemandeCongeFxHelper;
-import helper.DemandeAugmentationFxHelper1 ;
+import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
 import javafx.event.ActionEvent;
@@ -18,7 +19,7 @@ import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.TableView;
 import javafx.stage.Stage;
-import service.DemandeCongeFacade;
+import service.DemandeFacade;
 import util.Session;
 
 /**
@@ -28,10 +29,11 @@ import util.Session;
  */
 public class EmployeDemandeFXMLController implements Initializable {
 
-    DemandeCongeFacade demandeCongeFacade = new DemandeCongeFacade();
+    DemandeFacade demandeFacade = new DemandeFacade();
     
     private DemandeCongeFxHelper demandeCongeFxHelper;
     private DemandeAvanceFxHelper demandeAvanceFxHelper;
+    private DemandeAugmentationFxHelper demandeAugmentationFxHelper;
 
     @FXML
     private Label close;
@@ -41,6 +43,15 @@ public class EmployeDemandeFXMLController implements Initializable {
     
     @FXML
     private Label fullname;
+    
+    @FXML
+    private Button demandesButton;
+    @FXML
+    private Button inboxButton;
+    @FXML
+    private Button profileButton;
+    @FXML
+    private Button seDeconnecterButton;
 
     @FXML
     private TableView congeTableView = new TableView();
@@ -50,16 +61,36 @@ public class EmployeDemandeFXMLController implements Initializable {
     
     @FXML
     private TableView augmentationTableView = new TableView();
+    
 
     /**
      * Initializes the controller class.
      */
     private void initHelper() {
-        demandeCongeFxHelper = new DemandeCongeFxHelper(congeTableView, demandeCongeFacade.getAllDemandes());
-//      demandeAvanceFxHelper = new DemandeAvanceFxHelper(avanceTableView, demandeAvanceFacade.getAllDemandes());
-/      demandeAugmentationFxHelper = new DemandeAugmentationFxHelper(augmentationTableView, demandeAugmentationFacade.getAllDemandes());
+        demandeCongeFxHelper = new DemandeCongeFxHelper(congeTableView, demandeFacade.getAllDemandesConges());
+        demandeAvanceFxHelper = new DemandeAvanceFxHelper(avanceTableView, demandeFacade.getAllDemandesAvance());
+        demandeAugmentationFxHelper = new DemandeAugmentationFxHelper(augmentationTableView, demandeFacade.getAllDemandesAugmentations());
     }
 
+    
+    @FXML
+    private void toMesDemandes(){
+        System.out.println("***********");
+    }
+    @FXML
+    private void toBoiteReception(ActionEvent actionEvent) throws IOException{
+        ViewLauncher.forward(actionEvent, "BoiteFXML.fxml", this.getClass());
+    }
+    @FXML
+    private void toProfile(){
+        System.out.println("***********");
+    }
+    @FXML
+    private void seDeconnecter(ActionEvent actionEvent) throws IOException{
+        Session.clear();
+        ViewLauncher.forward(actionEvent, "LoginFXML.fxml", this.getClass());
+    }
+    
     @FXML
     public void closeApp() {
         Stage stage = (Stage) close.getScene().getWindow();

@@ -4,10 +4,10 @@
  * and open the template in the editor.
  */
 package service;
-
 import bean.Salarie;
+import java.sql.PreparedStatement;
 import java.sql.ResultSet;
-import static jdk.nashorn.internal.runtime.Debug.id;
+import java.sql.SQLException;
 
 /**
  *
@@ -63,8 +63,12 @@ public class SalarieFacade {
     }
      
      public void test(){
-         Salarie s = getSalarieByLogin("hamza");
-         System.out.println(s);
+         int res = c.insertData("INSERT INTO employe values(sq_salarie.nextval, 'emp002', 'IBRAHIM', 'Housseini', 'abbalele', 'abbalele', '0671717171', '15000.00', 41)");
+        if(res == 1){
+            System.out.println("success !");
+        }else
+             System.out.println("error !!!");
      }
-
+     
+     
 }
