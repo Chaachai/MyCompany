@@ -11,9 +11,15 @@ import bean.DemandeConge;
 import bean.EtatDemande;
 import bean.Mois;
 import bean.Salarie;
+import java.sql.Connection;
+import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+import java.sql.SQLException;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import util.Session;
 
 /**
@@ -90,6 +96,58 @@ public class DemandeFacade {
             }
         } else {
             return null;
+        }
+    }
+
+    public int ajouterDemandeConge(Date date_debut, Date date_fin, String comment) {
+        Salarie sal = ((Salarie) Session.getAttribut("connectedUser"));
+        Connection con = c.connect();
+        Date nowDate = new Date();
+        java.sql.Date sqlDateDebut = new java.sql.Date(date_debut.getTime());
+        java.sql.Date sqlDateFin = new java.sql.Date(date_fin.getTime());
+        java.sql.Date sqlNowDate = new java.sql.Date(nowDate.getTime());
+        String query = "INSERT INTO demandeconge VALUES (?,?,?,?,?,?,?)";
+        PreparedStatement ps;
+        try {
+            ps = con.prepareStatement(query);
+            ps.setLong(1, c.generateId("demandeConge", "id"));
+            ps.setString(2, comment);
+            ps.setInt(3, 0);
+            ps.setLong(4, sal.getId());
+            ps.setDate(5, sqlDateDebut);
+            ps.setDate(6, sqlDateFin);
+            ps.setDate(7, sqlNowDate);
+            ps.execute();
+            ps.close();
+            return 1;
+        } catch (SQLException ex) {
+            Logger.getLogger(DemandeFacade.class.getName()).log(Level.SEVERE, null, ex);
+            return -1;
+        }
+    }
+    
+    public int ajouterDemandeAvance(int pourcentage, int mois, String comment) {
+        Salarie sal = ((Salarie) Session.getAttribut("connectedUser"));
+        Connection con = c.connect();
+        Date nowDate = new Date();
+        java.sql.Date sqlNowDate = new java.sql.Date(nowDate.getTime());
+        String query = "INSERT INTO demandeavance VALUES (?,?,?,?,?,?,?)";
+        PreparedStatement ps;
+        try {
+            ps = con.prepareStatement(query);
+            ps.setLong(1, c.generateId("demandeAvance", "id"));
+            ps.setString(2, comment);
+            ps.setDate(3, sqlNowDate);
+            ps.setInt(4, 0);
+            ps.setLong(5, sal.getId());
+            ps.setInt(6, pourcentage);
+            ps.setInt(7, mois);
+            ps.execute();
+            ps.close();
+            return 1;
+        } catch (SQLException ex) {
+            Logger.getLogger(DemandeFacade.class.getName()).log(Level.SEVERE, null, ex);
+            return -1;
         }
     }
 }

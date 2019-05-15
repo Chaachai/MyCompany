@@ -52,6 +52,9 @@ public class EmployeDemandeFXMLController implements Initializable {
     private Button profileButton;
     @FXML
     private Button seDeconnecterButton;
+    
+    @FXML
+    private Button ajouterConge;
 
     @FXML
     private TableView congeTableView = new TableView();
@@ -72,6 +75,11 @@ public class EmployeDemandeFXMLController implements Initializable {
         demandeAugmentationFxHelper = new DemandeAugmentationFxHelper(augmentationTableView, demandeFacade.getAllDemandesAugmentations());
     }
 
+    
+     @FXML
+    private void ajouterConge(ActionEvent actionEvent) throws IOException{
+        ViewLauncher.forward(actionEvent, "DemandeCongeFXML.fxml", this.getClass());
+    }
     
     @FXML
     private void toMesDemandes(){
