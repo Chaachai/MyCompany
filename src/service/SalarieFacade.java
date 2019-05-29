@@ -5,9 +5,13 @@
  */
 package service;
 import bean.Salarie;
+import java.sql.CallableStatement;
+import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 /**
  *
@@ -62,13 +66,39 @@ public class SalarieFacade {
         }
     }
      
-     public void test(){
-         int res = c.insertData("INSERT INTO employe values(sq_salarie.nextval, 'emp002', 'IBRAHIM', 'Housseini', 'abbalele', 'abbalele', '0671717171', '15000.00', 41)");
-        if(res == 1){
-            System.out.println("success !");
-        }else
-             System.out.println("error !!!");
+     public void test() throws SQLException{
+         Connection con = c.connect();
+         PreparedStatement ps = null ;
+         String query = "INSERT INTO employe values(1111, 'emp008', 'ghollam', 'bahri', 'gholam', 'gholam', '0671717171', '15000', 21)" ;
+         ps.execute();
+         ps.close();
+         
      }
+     public void ajouterEmploye(String nom,String prenom, String login,String motPasse,String telephone,float salaire,int role,int IDdep) {
+        try {
+            //        Salarie sal = ((Salarie) Session.getAttribut("connectedUser"));
+            Connection con = c.connect();
+            CallableStatement cs ;
+            cs = con.prepareCall("{ call ajouterEmp(?,?,?,?,?,?,?,?,?)}") ;
+            cs.setLong(1,c.generateId("salarie", "ID"));
+            cs.setString(2,nom);
+            cs.setString(3, prenom);
+            cs.setString(4,login);
+            cs.setString(5,motPasse);
+            cs.setString(6,telephone);
+            cs.setFloat(7, salaire);           
+            cs.setInt(8, role);
+            cs.setInt(9, IDdep);
+            
+            cs.execute();
+            System.out.println("insert succes");
+                              
+        } catch (SQLException ex) {
+            System.out.println("exeption");
+            Logger.getLogger(SalarieFacade.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
+     
      
      
 }

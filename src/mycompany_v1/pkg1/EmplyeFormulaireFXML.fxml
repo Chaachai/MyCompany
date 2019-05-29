@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.jfoenix.controls.JFXTextField?>
+<?import javafx.scene.Cursor?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ComboBox?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane id="AnchorPane" prefHeight="600.0" prefWidth="327.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="mycompany_v1.pkg1.DemandeCongeFXMLController">
+   <children>
+      <AnchorPane prefHeight="600.0" prefWidth="320.0">
+         <children>
+            <ImageView fitHeight="650.0" fitWidth="330.0" layoutY="4.0" pickOnBounds="true">
+               <image>
+                  <Image url="@../images/night-sunset-gradation-blur-wallpaper-hd-iphone-wallpapers-in-blur-wallpapers-750_1334.jpg" />
+               </image>
+            </ImageView>
+            <Button fx:id="annuler" layoutX="60.0" layoutY="589.0" mnemonicParsing="false" onAction="#annuler" prefHeight="25.0" prefWidth="101.0" style="-fx-background-color: #d82b2b;" text="Annuler" textFill="WHITE" />
+            <ImageView fitHeight="150.0" fitWidth="200.0" layoutX="87.0" layoutY="50.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../images/115783931601b5c.png" />
+               </image>
+            </ImageView>
+            <Button fx:id="envoyer" layoutX="164.0" layoutY="589.0" mnemonicParsing="false" onAction="#envoyerDemande" prefHeight="25.0" prefWidth="101.0" style="-fx-background-color: #209948;" text="Ajouter" textFill="WHITE" />
+            <Label id="close" fx:id="close" layoutX="299.0" layoutY="8.0" onMouseClicked="#closeApp" text="X" textFill="WHITE">
+               <font>
+                  <Font name="Berlin Sans FB" size="23.0" />
+               </font>
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor>
+            </Label>
+            <Label layoutX="259.0" layoutY="-2.0" text="-" textFill="WHITE">
+               <font>
+                  <Font name="Berlin Sans FB" size="42.0" />
+               </font>
+            </Label>
+            <Button fx:id="minimize" layoutX="252.0" layoutY="9.0" mnemonicParsing="false" onAction="#minimizeApp" opacity="0.01" prefHeight="3.0" prefWidth="28.0">
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor>
+            </Button>
+            <JFXTextField focusColor="WHITE" labelFloat="true" layoutX="60.0" layoutY="200.0" prefHeight="25.0" prefWidth="203.0" promptText="Nom " styleClass="employeForme" stylesheets="@emplyeformulairefxml.css" unFocusColor="#ff85eb8f">
+               <font>
+                  <Font size="14.0" />
+               </font>
+            </JFXTextField>
+            <JFXTextField focusColor="WHITE" labelFloat="true" layoutX="60.0" layoutY="291.0" prefWidth="203.0" promptText="N° Employe" unFocusColor="#ff85eb8f">
+               <font>
+                  <Font size="14.0" />
+               </font>
+            </JFXTextField>
+            <JFXTextField focusColor="WHITE" labelFloat="true" layoutX="60.0" layoutY="335.0" prefWidth="203.0" promptText="Log in" unFocusColor="#ff85eb8f">
+               <font>
+                  <Font size="14.0" />
+               </font>
+            </JFXTextField>
+            <JFXTextField focusColor="WHITE" labelFloat="true" layoutX="60.0" layoutY="379.0" prefWidth="203.0" promptText="Mot de passe" unFocusColor="#ff85eb8f">
+               <font>
+                  <Font size="14.0" />
+               </font>
+            </JFXTextField>
+            <JFXTextField focusColor="WHITE" labelFloat="true" layoutX="60.0" layoutY="245.0" prefWidth="203.0" promptText="Prenom " unFocusColor="#ff85eb8f">
+               <font>
+                  <Font size="14.0" />
+               </font>
+            </JFXTextField>
+            <JFXTextField focusColor="WHITE" labelFloat="true" layoutX="60.0" layoutY="424.0" prefWidth="203.0" promptText="N° Telephone " unFocusColor="#ff85eb8f">
+               <font>
+                  <Font size="14.0" />
+               </font>
+            </JFXTextField>
+            <ComboBox layoutX="60.0" layoutY="534.0" prefWidth="203.0" promptText="Departement" />
+            <JFXTextField focusColor="WHITE" labelFloat="true" layoutX="60.0" layoutY="468.0" prefWidth="203.0" promptText="Salaire" unFocusColor="#ff85eb8f">
+               <font>
+                  <Font size="14.0" />
+               </font>
+            </JFXTextField>
+         </children>
+      </AnchorPane>
+   </children>
+</AnchorPane>

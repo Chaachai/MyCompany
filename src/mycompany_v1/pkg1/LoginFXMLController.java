@@ -44,7 +44,7 @@ public class LoginFXMLController implements Initializable {
     private TextField login;
     @FXML
     private PasswordField password;
-
+    
     @FXML
     public void connect(ActionEvent actionEvent) throws IOException {
         int res = sf.login(login.getText(), password.getText());
